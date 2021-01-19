@@ -13,15 +13,17 @@
     </ContentPage.ToolbarItems>
 
     <StackLayout>
-        <ListView x:Name="contactsList" ItemsSource="{Binding ContactList}" HasUnevenRows="True">
+        <ListView x:Name="contactsListView" HasUnevenRows="True" ItemTapped="ContactsListView_OnItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <ViewCell.View>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding FirstName}" FontSize="15"/>
-                            </StackLayout>
-                        </ViewCell.View>
+                        <StackLayout Orientation="Horizontal" Padding="10">
+                            <Frame BackgroundColor="{Binding CircleColor}" CornerRadius="100" WidthRequest="15" HeightRequest="15">
+                                <Label Text="{Binding Initials}" FontSize="10" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            </Frame>
+                            <Label Text="{Binding FirstName}" FontSize="20" VerticalTextAlignment="Center" Margin="10,0,0,0"/>
+                            <Label Text="{Binding LastName}" FontSize="20" VerticalTextAlignment="Center"/>
+                        </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

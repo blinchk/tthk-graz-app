@@ -15,7 +15,7 @@ namespace tthk_graz_app
             database.CreateTable<Contact>();
         }
 
-        public IEnumerable<Contact> GetItems()
+        public List<Contact> GetItems()
         {
             return database.Table<Contact>().ToList();
         }

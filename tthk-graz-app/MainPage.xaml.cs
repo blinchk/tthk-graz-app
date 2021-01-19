@@ -6,8 +6,6 @@ namespace tthk_graz_app
 {
     public partial class MainPage : ContentPage
     {
-        public List<Contact> ContactList { get; set; }
-
         public MainPage()
         {
             InitializeComponent();
@@ -15,17 +13,25 @@ namespace tthk_graz_app
 
         protected override void OnAppearing()
         {
-            List<Contact> contactList = new List<Contact>();
-            contactList = App.Database.GetItems() as List<Contact>;
-            contactsList.ItemsSource = contactList;
-            ContactList = contactList;
+            var contactsList = App.Database.GetItems();
+            contactsListView.ItemsSource = contactsList;
             this.BindingContext = this;
             base.OnAppearing();
         }
 
         private void AddContactToolbarItem_OnClicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new NewContactPage());
+            Navigation.PushAsync(new EditContactPage());
+        }
+
+        private void ContactsListView_OnItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var contact = e.Item as Contact;
+            if (contact != null)
+            {
+                Navigation.PushAsync(new ContactPage(contact));
+            }
+
         }
     }
 }
