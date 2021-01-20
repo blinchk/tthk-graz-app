@@ -29,13 +29,18 @@ namespace tthk_graz_app
             contactInitialsLabel.Text = contact.Initials;
             contactInitialsCircle.BackgroundColor = contact.CircleColor;
             contactDataListView.ItemsSource = contactData;
+            contactDataListView.SelectionMode = ListViewSelectionMode.None;
+            contactDataListView.ItemTapped += ContactDataListViewOnItemTapped;
             contactDataListView.ItemTemplate = new DataTemplate(() =>
             {
-                Label fieldTitleLabel = new Label();
+                Label fieldTitleLabel = new Label()
+                {
+                    FontSize = 10
+                };
                 fieldTitleLabel.SetBinding(Label.TextProperty, "Key");
                 Label fieldDataLabel = new Label()
                 {
-                    FontSize = 15
+                    FontSize = 17
                 };
                 fieldDataLabel.SetBinding(Label.TextProperty, "Value");
                 return new ViewCell()
@@ -48,6 +53,36 @@ namespace tthk_graz_app
                     }
                 };
             });
+        }
+
+        private void ContactDataListViewOnItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var field = (KeyValuePair<string, string>) e.Item;
+            string communicationTool = field.Key;
+            string communicationToolData = field.Value;
+            if (!String.IsNullOrEmpty(communicationToolData))
+            {
+                switch (communicationTool)
+                {
+                    case "Telefoninumber":
+
+                        break;
+                    case "E-post":
+                        break;
+                    case "Telegram":
+
+                        break;
+                    case "VK":
+
+                        break;
+                    case "Twitter":
+
+                        break;
+                    default:
+                        break;
+                }
+            }
+            
         }
 
         private void DeleteContactMenuItemOnClicked(object sender, EventArgs e)

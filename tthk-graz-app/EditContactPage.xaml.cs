@@ -11,11 +11,13 @@ namespace tthk_graz_app
         public EditContactPage()
         {
             InitializeComponent();
+            Title = "Uue kontakti lisamine";
         }
 
         public EditContactPage(Contact contact)
         {
             InitializeComponent();
+            Title = "Kontakti muutmine";
             Id = contact.Id;
             firstNameCell.Text = contact.FirstName;
             lastNameCell.Text = contact.LastName;

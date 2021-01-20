@@ -24,7 +24,7 @@
                 <Label VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontSize="50" TextColor="White" x:Name="contactInitialsLabel"></Label>
             </Frame>
             <Label FontSize="30" HorizontalTextAlignment="Center" x:Name="contactFullNameLabel"/>
-            <ListView HasUnevenRows="True" x:Name="contactDataListView">
+            <ListView HasUnevenRows="True" x:Name="contactDataListView" SelectionMode="None">
 
             </ListView>
         </StackLayout>
