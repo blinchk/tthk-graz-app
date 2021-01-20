@@ -6,7 +6,7 @@ namespace tthk_graz_app
 {
     public class Contact
     {
-        static Color[] materialColors = new Color[]
+        static readonly Color[] materialColors = new Color[]
         {
             Color.DarkOrange,
             Color.Tomato,
