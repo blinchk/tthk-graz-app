@@ -12,10 +12,10 @@ namespace tthk_graz_app
 	[XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ContactPage : ContentPage
     {
-        private Contact contact;
+        private Contact _contact;
         public ContactPage(Contact contact)
         {
-            this.contact = contact;
+            _contact = contact;
             InitializeComponent();
             string fullName = contact.FirstName + " " + contact.LastName;
             Title = fullName;
@@ -58,42 +58,20 @@ namespace tthk_graz_app
         private void ContactDataListViewOnItemTapped(object sender, ItemTappedEventArgs e)
         {
             var field = (KeyValuePair<string, string>) e.Item;
-            string communicationTool = field.Key;
-            string communicationToolData = field.Value;
-            if (!String.IsNullOrEmpty(communicationToolData))
-            {
-                switch (communicationTool)
-                {
-                    case "Telefoninumber":
-
-                        break;
-                    case "E-post":
-                        break;
-                    case "Telegram":
-
-                        break;
-                    case "VK":
-
-                        break;
-                    case "Twitter":
-
-                        break;
-                    default:
-                        break;
-                }
-            }
-            
+            string communicationToolField = field.Value;
+            if (!String.IsNullOrEmpty(communicationToolField))
+                Navigation.PushAsync(new CongratulationChoicePage(field, _contact));
         }
 
         private void DeleteContactMenuItemOnClicked(object sender, EventArgs e)
         {
-            App.Database.DeleteItem(contact.Id);
+            App.Database.DeleteItem(_contact.Id);
             Navigation.PopAsync();
         }
 
         private void ChangeContactMenuItemOnClicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new EditContactPage(contact));
+            Navigation.PushAsync(new EditContactPage(_contact));
         }
     }
 }
