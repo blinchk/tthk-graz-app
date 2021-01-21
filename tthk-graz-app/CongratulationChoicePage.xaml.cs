@@ -22,7 +22,7 @@ namespace tthk_graz_app
             congratulationChoiceListView.ItemsSource = holidays;
             congratulationChoiceListView.ItemTapped += CongratulationChoiceListViewOnItemTapped;
             congratulationChoiceListView.SelectionMode = ListViewSelectionMode.None;
-            Title = $"Vali pidu: {_communicationTool.Key}";
+            Title = $"Vali püha: {_communicationTool.Key}";
         }
 
         private void CongratulationChoiceListViewOnItemTapped(object sender, ItemTappedEventArgs e)
