@@ -20,11 +20,14 @@ namespace tthk_graz_app
             string fullName = contact.FirstName + " " + contact.LastName;
             Title = fullName;
             Dictionary<string, string> contactData = new Dictionary<string, string>();
-            contactData.Add("Telefoninumber", contact.Phone);
-            contactData.Add("E-post", contact.Email);
-            contactData.Add("Telegram", contact.Telegram);
-            contactData.Add("VK", contact.VK);
-            contactData.Add("Twitter", contact.Twitter);
+            string[] fieldTitles = new string[] {"Telefoninumber", "E-post", "Telegram", "VK", "Twitter"};
+            string[] fieldData = new string[]
+                {contact.Phone, contact.Email, contact.Telegram, contact.VK, contact.Twitter};
+            for (int i = 0; i < fieldTitles.Length; i++)
+            {
+                if (!String.IsNullOrEmpty(fieldData[i]))
+                    contactData.Add(fieldTitles[i], fieldData[i]);
+            }
             contactFullNameLabel.Text = fullName;
             contactInitialsLabel.Text = contact.Initials;
             contactInitialsCircle.BackgroundColor = contact.CircleColor;
